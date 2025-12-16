@@ -1,0 +1,81 @@
+id,nombre,categoria,precio,stock,descripcion,proveedor
+1,Espada Celestial,Armas,1500,25,Espada forjada con metal estelar,Forja Celestial
+2,Armadura de Dragón,Armaduras,3000,15,Armadura resistente hecha de escamas de dragón,Herrería Dragón
+3,Poción de Vida,Pociones,50,200,Restaura 100 puntos de vida,Alquimia Místika
+4,Poción de Maná,Pociones,75,150,Restaura 150 puntos de maná,Alquimia Místika
+5,Arco Élfico,Armas,1200,30,Arco ligero con precisión mejorada,Artesanía Élfica
+6,Escudo de Acero,Escudos,800,40,Escudo resistente de acero reforzado,Forja Celestial
+7,Casco de Hierro,Armaduras,500,50,Casco básico de protección,Herrería Dragón
+8,Botas de Velocidad,Calzado,600,35,Aumentan la velocidad de movimiento,Zapatería Rápida
+9,Guantes de Fuerza,Accesorios,450,45,Incrementan la fuerza del portador,Artesanía Élfica
+10,Anillo Mágico,Accesorios,900,20,Anillo que aumenta poder mágico,Joyería Arcana
+11,Capa de Invisibilidad,Capas,2500,10,Otorga invisibilidad temporal,Tejeduría Sombría
+12,Báculo Ancestral,Armas,2000,12,Báculo con poderes antiguos,Alquimia Místika
+13,Pergamino de Fuego,Consumibles,100,80,Lanza una bola de fuego,Scriptorium Mágico
+14,Pergamino de Hielo,Consumibles,100,80,Lanza un rayo de hielo,Scriptorium Mágico
+15,Elixir Supremo,Pociones,200,50,Restaura vida y maná completamente,Alquimia Místika
+16,Daga Envenenada,Armas,700,60,Daga que causa daño por veneno,Forja Sombría
+17,Grimorio Antiguo,Libros,1800,8,Libro de hechizos poderosos,Biblioteca Arcana
+18,Amuleto Protector,Accesorios,650,55,Reduce daño recibido,Joyería Arcana
+19,Flechas Mágicas,Municiones,25,500,Flechas encantadas (paquete de 20),Artesanía Élfica
+20,Gema de Resurreción,Consumibles,5000,3,Revive al portador tras morir,Joyería Arcana
+21,Corona del Sabio,Accesorios,2200,7,Incrementa la inteligencia y el poder mágico del portador,Joyería Arcana
+22,Espada de Fuego,Armas,1800,28,Espada envuelta en llamas eternas,Forja Celestial
+23,Maza de Guerra,Armas,950,42,Maza pesada con cabeza de acero reforzado,Forja Celestial
+24,Hacha de Batalla,Armas,1100,38,Hacha de doble filo para combate cuerpo a cuerpo,Herrería Dragón
+25,Ballesta de Precisión,Armas,1400,22,Ballesta con mira mejorada y mayor alcance,Artesanía Élfica
+26,Armadura de Mithril,Armaduras,4500,8,Armadura ligera pero extremadamente resistente,Herrería Dragón
+27,Grebas de Hierro,Armaduras,650,52,Protección para las piernas,Forja Celestial
+28,Pechera de Acero,Armaduras,1200,32,Pechera de acero pulido con grabados ornamentales,Herrería Dragón
+29,Cota de Malla,Armaduras,850,45,Cota de malla flexible y resistente,Forja Celestial
+30,Gorguera de Protección,Armaduras,550,48,Protección para el cuello y hombros,Forja Celestial
+31,Poción de Fuerza,Pociones,120,120,Aumenta temporalmente la fuerza física,Alquimia Místika
+32,Poción de Agilidad,Pociones,90,135,Aumenta la velocidad y agilidad,Alquimia Místika
+33,Poción de Resistencia,Pociones,110,125,Aumenta la resistencia al daño,Alquimia Místika
+34,Poción de Veneno,Pociones,85,140,Veneno que causa daño continuo,Alquimia Místika
+35,Antídoto Universal,Pociones,150,95,Cura cualquier tipo de veneno o enfermedad,Alquimia Místika
+36,Escudo de Ébano,Escudos,1200,18,Escudo de madera oscura mágicamente reforzada,Artesanía Élfica
+37,Escudo de Tormenta,Escudos,950,26,Escudo que desvía ataques mágicos,Forja Celestial
+38,Escudo Rúnico,Escudos,1500,15,Escudo con runas protectoras grabadas,Forja Celestial
+39,Botas de Salto,Calzado,750,28,Botas que permiten saltos extraordinarios,Zapatería Rápida
+40,Sandalias del Viajero,Calzado,400,60,Sandalias que reducen la fatiga en largos viajes,Zapatería Rápida
+41,Botas de Escalada,Calzado,850,22,Botas con agarre mejorado para escalar,Zapatería Rápida
+42,Collar de Vitalidad,Accesorios,800,35,Aumenta la salud máxima del portador,Joyería Arcana
+43,Brazalete de Resistencia,Accesorios,700,42,Aumenta la resistencia física,Joyería Arcana
+44,Pendiente de Maná,Accesorios,550,48,Regenera maná lentamente,Joyería Arcana
+45,Collar de Protección Mágica,Accesorios,1100,25,Reduce el daño mágico recibido,Joyería Arcana
+46,Capa de las Sombras,Capas,2800,9,Capa que permite moverse en las sombras,Tejeduría Sombría
+47,Capa de Refugio,Capas,1900,16,Capa que oculta la presencia del portador,Tejeduría Sombría
+48,Capa Real,Capas,3200,7,Capa de gala con bordados dorados,Tejeduría Sombría
+49,Vara de Fuego,Armas,1600,20,Vara que canaliza el poder del fuego,Alquimia Místika
+50,Vara de Hielo,Armas,1600,20,Vara que canaliza el poder del hielo,Alquimia Místika
+51,Vara de Rayo,Armas,1750,18,Vara que lanza rayos eléctricos,Alquimia Místika
+52,Pergamino de Curación,Consumibles,150,70,Restaña heridas críticas,Scriptorium Mágico
+53,Pergamino de Teletransporte,Consumibles,300,45,Teletransporta al usuario a un lugar conocido,Scriptorium Mágico
+54,Pergamino de Protección,Consumibles,120,85,Conjura un escudo mágico protector,Scriptorium Mágico
+55,Pergamino de Invocación,Consumibles,400,35,Invoca una criatura aliada temporalmente,Scriptorium Mágico
+56,Elixir de Experiencia,Pociones,500,30,Aumenta la experiencia ganada temporalmente,Alquimia Místika
+57,Elixir de Oro,Pociones,350,40,Aumenta el oro obtenido de enemigos,Alquimia Místika
+58,Elixir de Regeneración,Pociones,280,50,Regenera vida y maná continuamente,Alquimia Místika
+59,Daga de Plata,Armas,950,55,Daga bendecida efectiva contra no muertos,Forja Sombría
+60,Daga Gemela,Armas,1400,32,Par de dagas equilibradas para combate dual,Forja Sombría
+61,Espada Bastarda,Armas,1650,24,Espada de una mano y media versátil,Forja Celestial
+62,Espada Larga,Armas,1550,26,Espada clásica de hoja larga,Forja Celestial
+63,Tratado de Magia Elemental,Libros,2200,6,Libro sobre dominio de magia elemental,Biblioteca Arcana
+64,Crónicas de Batallas,Libros,1800,8,Relatos históricos de grandes batallas,Biblioteca Arcana
+65,Manual de Herboristería,Libros,1200,15,Guía para identificar y usar hierbas mágicas,Biblioteca Arcana
+66,Bestiario Completo,Libros,2500,5,Enciclopedia de criaturas míticas y sus debilidades,Biblioteca Arcana
+67,Bola de Fuego Mágica,Consumibles,250,55,Esfera que explota al impactar,Scriptorium Mágico
+68,Cristal de Poder,Consumibles,800,25,Cristal que almacena energía mágica para uso posterior,Joyería Arcana
+69,Gema de Visión,Consumibles,450,40,Gema que permite ver a través de ilusiones,Joyería Arcana
+70,Flechas de Plata,Municiones,35,400,Flechas bendecidas efectivas contra criaturas oscuras,Artesanía Élfica
+71,Flechas Explosivas,Municiones,50,300,Flechas que explotan al impactar,Artesanía Élfica
+72,Proyectiles de Balista,Municiones,80,200,Proyectiles pesados para ballestas de asedio,Herrería Dragón
+73,Perla de Sabiduría,Accesorios,1800,12,Perla que aumenta la sabiduría y conocimiento,Joyería Arcana
+74,Anillo de Invisibilidad,Accesorios,3500,5,Anillo que otorga invisibilidad temporal,Joyería Arcana
+75,Anillo de Regeneración,Accesorios,1500,18,Anillo que regenera salud lentamente,Joyería Arcana
+76,Anillo de Resistencia al Fuego,Accesorios,950,28,Anillo que protege contra el fuego,Joyería Arcana
+77,Guanteletes de Combate,Armaduras,750,38,Guanteletes reforzados para combate cuerpo a cuerpo,Herrería Dragón
+78,Espinilleras de Acero,Armaduras,600,42,Protección para las espinillas,Forja Celestial
+79,Yelmo de Visión,Armaduras,1100,27,Yelmo que permite ver en la oscuridad,Herrería Dragón
+80,Máscara de Protección,Armaduras,450,55,Máscara que filtra venenos y gases tóxicos,Forja Celestial

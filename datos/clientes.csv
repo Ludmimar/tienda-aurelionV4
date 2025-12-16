@@ -1,0 +1,51 @@
+id,nombre,email,telefono,ciudad,fecha_registro
+1,Aragorn Rey Elessar,aragorn@gondor.com,555-0101,Gondor,2024-01-15
+2,Gandalf el Gris,gandalf@istari.com,555-0102,Rivendell,2024-01-20
+3,Legolas Hojaverde,legolas@mirkwood.com,555-0103,Bosque Negro,2024-02-01
+4,Gimli Martillo,gimli@erebor.com,555-0104,Erebor,2024-02-10
+5,Frodo Bolsón,frodo@shire.com,555-0105,La Comarca,2024-02-15
+6,Galadriel la Dama,galadriel@lothlorien.com,555-0106,Lothlórien,2024-02-20
+7,Elrond Medio Elfo,elrond@rivendell.com,555-0107,Rivendell,2024-03-01
+8,Boromir de Gondor,boromir@gondor.com,555-0108,Gondor,2024-03-05
+9,Saruman el Blanco,saruman@isengard.com,555-0109,Isengard,2024-03-10
+10,Arwen Evenstar,arwen@rivendell.com,555-0110,Rivendell,2024-03-15
+11,Bilbo Bolsón,bilbo@shire.com,555-0111,La Comarca,2024-03-20
+12,Thorin Escudo de Roble,thorin@erebor.com,555-0112,Erebor,2024-04-01
+13,Meriadoc Brandigamo,merry@shire.com,555-0113,La Comarca,2024-04-05
+14,Peregrin Tuk,pippin@shire.com,555-0114,La Comarca,2024-04-10
+15,Samwise Gamyi,sam@shire.com,555-0115,La Comarca,2024-04-15
+16,Éowyn de Rohan,eowyn@rohan.com,555-0116,Rohan,2024-04-20
+17,Théoden Rey,theoden@rohan.com,555-0117,Rohan,2024-04-25
+18,Faramir de Gondor,faramir@gondor.com,555-0118,Gondor,2024-05-01
+19,Éomer de Rohan,eomer@rohan.com,555-0119,Rohan,2024-05-05
+20,Denethor Señor de Gondor,denethor@gondor.com,555-0120,Gondor,2024-05-10
+21,Radagast el Pardo,radagast@istari.com,555-0121,Bosque Negro,2024-05-15
+22,Tom Bombadil,tombombadil@oldforest.com,555-0122,Bosque Viejo,2024-05-20
+23,Sauron el Señor Oscuro,sauron@mordor.com,555-0123,Mordor,2024-05-25
+24,Gollum,gollum@misty.com,555-0124,Montañas Nubladas,2024-06-01
+25,Smeagol,smeagol@misty.com,555-0125,Montañas Nubladas,2024-06-05
+26,Aragorn Rey Elessar II,aragorn2@gondor.com,555-0126,Gondor,2024-06-10
+27,Elrond Medio Elfo II,elrond2@rivendell.com,555-0127,Rivendell,2024-06-15
+28,Legolas Hojaverde II,legolas2@mirkwood.com,555-0128,Bosque Negro,2024-06-20
+29,Gimli Martillo II,gimli2@erebor.com,555-0129,Erebor,2024-07-01
+30,Frodo Bolsón II,frodo2@shire.com,555-0130,La Comarca,2024-07-05
+31,Galadriel la Dama II,galadriel2@lothlorien.com,555-0131,Lothlórien,2024-07-10
+32,Boromir de Gondor II,boromir2@gondor.com,555-0132,Gondor,2024-07-15
+33,Saruman el Blanco II,saruman2@isengard.com,555-0133,Isengard,2024-07-20
+34,Arwen Evenstar II,arwen2@rivendell.com,555-0134,Rivendell,2024-08-01
+35,Bilbo Bolsón II,bilbo2@shire.com,555-0135,La Comarca,2024-08-05
+36,Thorin Escudo de Roble II,thorin2@erebor.com,555-0136,Erebor,2024-08-10
+37,Meriadoc Brandigamo II,merry2@shire.com,555-0137,La Comarca,2024-08-15
+38,Peregrin Tuk II,pippin2@shire.com,555-0138,La Comarca,2024-08-20
+39,Samwise Gamyi II,sam2@shire.com,555-0139,La Comarca,2024-09-01
+40,Éowyn de Rohan II,eowyn2@rohan.com,555-0140,Rohan,2024-09-05
+41,Théoden Rey II,theoden2@rohan.com,555-0141,Rohan,2024-09-10
+42,Faramir de Gondor II,faramir2@gondor.com,555-0142,Gondor,2024-09-15
+43,Éomer de Rohan II,eomer2@rohan.com,555-0143,Rohan,2024-09-20
+44,Denethor Señor de Gondor II,denethor2@gondor.com,555-0144,Gondor,2024-10-01
+45,Radagast el Pardo II,radagast2@istari.com,555-0145,Bosque Negro,2024-10-05
+46,Tom Bombadil II,tombombadil2@oldforest.com,555-0146,Bosque Viejo,2024-10-10
+47,Sauron el Señor Oscuro II,sauron2@mordor.com,555-0147,Mordor,2024-10-15
+48,Gollum II,gollum2@misty.com,555-0148,Montañas Nubladas,2024-10-20
+49,Smeagol II,smeagol2@misty.com,555-0149,Montañas Nubladas,2024-11-01
+50,Legolas III,legolas3@mirkwood.com,555-0150,Bosque Negro,2024-11-05

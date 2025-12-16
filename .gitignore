@@ -1,0 +1,202 @@
+# ================================================
+# .gitignore para Proyecto Tienda Aurelion
+# Sprint 4 - IBM - Power BI: Medidas, KPIs y Análisis Temporal
+# ================================================
+
+# ================================================
+# ARCHIVOS DE POWER BI (Archivos Grandes)
+# ================================================
+# Opción 1: Si entregas por Git (comentar estas líneas)
+# Opción 2: Si entregas por otro medio (descomentar)
+# *.pbix
+# *.pbit
+# Power BI/*.pbix
+# Power BI/*.pbit
+# *.pbix~
+
+# NOTA: Los archivos .pbix/.pbit son binarios grandes (2-5 MB+)
+# Git no maneja bien archivos binarios. Opciones:
+# 1. NO subirlos a Git (usar .gitignore)
+# 2. Subirlos SOLO si el repositorio lo permite y es necesario
+# 3. Compartirlos por Google Drive/OneDrive separadamente
+# 
+# Para Sprint 4: Sprint4.pbix está en Power BI/
+
+# ================================================
+# PYTHON - Cache y Temporales
+# ================================================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Cache de Python en subdirectorios
+Power BI/__pycache__/
+programas/__pycache__/
+
+# ================================================
+# ENTORNOS VIRTUALES
+# ================================================
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# ================================================
+# JUPYTER NOTEBOOK
+# ================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+**/.ipynb_checkpoints/
+
+# ================================================
+# IDEs y EDITORES
+# ================================================
+# Visual Studio Code
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+# ================================================
+# SISTEMA OPERATIVO
+# ================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ================================================
+# STREAMLIT
+# ================================================
+.streamlit/
+.streamlit/secrets.toml
+.streamlit/config.toml
+
+# ================================================
+# LOGS Y TEMPORALES
+# ================================================
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.cache/
+
+# ================================================
+# DATOS SENSIBLES (Si los tuvieras)
+# ================================================
+# .env
+# secrets/
+# credentials/
+# config.ini
+
+# ================================================
+# ARCHIVOS DE BACKUP
+# ================================================
+*.bak
+*.backup
+*_backup.*
+*_old.*
+*.orig
+
+# ================================================
+# ARCHIVOS QUE SÍ DEBERÍAN ESTAR EN GIT
+# ================================================
+# ✅ datos/*.csv - Archivos de datos del proyecto
+# ✅ programas/*.py - Scripts Python
+# ✅ programas/*.ipynb - Notebooks Jupyter
+# ✅ documentacion/*.md - Documentación
+# ✅ *.md - Archivos Markdown (README, guías, etc.)
+# ✅ requirements.txt - Dependencias
+# ✅ Power BI/*.m - Queries Power Query
+# ✅ Power BI/*.dax - Medidas DAX (si se exportan)
+# ✅ Power BI/*.json - Tema JSON
+# ✅ Power BI/*.md - Documentación del Sprint 4
+# ✅ Power BI/procesamiento_datos.py - Script principal Python
+# ✅ graficos/*.png - Gráficos generados (opcional)
+
+# ================================================
+# ARCHIVOS GENERADOS AUTOMÁTICAMENTE (Opcional)
+# ================================================
+# Los archivos CSV en resultados/ son generados por procesamiento_datos.py
+# Descomenta la siguiente línea si NO quieres incluirlos en Git:
+# Power BI/resultados/*.csv
+
+# Si quieres incluir los resultados como ejemplo, déjalos sin ignorar
+
+# ================================================
+# NOTAS IMPORTANTES
+# ================================================
+# 
+# Para proyectos académicos:
+# - Los archivos .csv DEBEN incluirse (son parte del proyecto)
+# - Los scripts .py DEBEN incluirse
+# - Las guías .md DEBEN incluirse
+# - Los .pbix/.pbit son OPCIONALES (archivos grandes)
+#
+# Alternativas para archivos grandes:
+# 1. Git LFS (Large File Storage) - Si GitHub lo soporta
+# 2. Enlace a Google Drive/OneDrive en el README
+# 3. Zip separado para archivos binarios
+# 4. Incluirlos SOLO en la entrega final (no en commits intermedios)
+#
+# ================================================
+

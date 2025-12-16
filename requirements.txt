@@ -1,0 +1,51 @@
+# ================================================
+# TIENDA AURELION - Dependencias del Proyecto
+# Sprint 4 - Power BI: Medidas, KPIs y Análisis Temporal - IBM
+#
+# Autor: Martos Ludmila
+# DNI: 34811650
+# ================================================
+
+# NOTA: La versión de consola (tienda_aurelion.py) NO requiere
+# dependencias externas. Solo usa librerías estándar de Python.
+
+# ================================================
+# Para Aplicación Web Streamlit
+# ================================================
+streamlit>=1.28.0
+pandas>=2.0.0
+
+# ================================================
+# Para Jupyter Notebook (Opcional)
+# ================================================
+jupyter>=1.0.0
+notebook>=7.0.0
+
+# ================================================
+# Para Análisis Estadístico (analisis_estadistico.py)
+# ================================================
+numpy>=1.24.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+scipy>=1.10.0
+
+# ================================================
+# Para Machine Learning (modelo_ml_ventas.py) - Sprint 3
+# ================================================
+scikit-learn>=1.3.0
+
+# ================================================
+# Instalación:
+# ================================================
+# Instalar todo:
+#   pip install -r requirements.txt
+#
+# Solo Streamlit (app web):
+#   pip install streamlit pandas
+#
+# Solo Jupyter (notebook):
+#   pip install jupyter notebook
+#
+# Solo Análisis Estadístico:
+#   pip install pandas numpy matplotlib seaborn scipy
+# ================================================
