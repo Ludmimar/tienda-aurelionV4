@@ -150,48 +150,422 @@ CALCULATE(
 ```
 **Formato**: Moneda ($)
 
+**📊 ¿Qué muestra esta medida?**
+
+Esta medida calcula las **ventas acumuladas desde el 1 de enero del año actual hasta la fecha más reciente** en el contexto.
+
+**Ejemplos:**
+- Si estás en **Enero 2025**: Muestra ventas de enero 2025
+- Si estás en **Junio 2025**: Muestra ventas acumuladas de enero a junio 2025
+- Si estás en **Diciembre 2025**: Muestra todas las ventas del año 2025
+
+**Cómo funciona:**
+- `DATESYTD()` incluye todas las fechas desde el 1 de enero del año actual
+- Suma todas las ventas desde el inicio del año hasta la fecha en el contexto
+- Es útil para ver el progreso del año
+
+**Ejemplo práctico:**
+- Si tienes un gráfico por mes y usas esta medida, cada mes mostrará el acumulado desde enero
+- Enero 2025: $158,119
+- Febrero 2025: $282,586 (Enero + Febrero)
+- Marzo 2025: $428,568 (Enero + Febrero + Marzo)
+- Y así sucesivamente...
+
 ---
 
-### Medida 13: Variación Interanual (YoY)
+### Medida 13: Variación Interanual (YoY) / Crecimiento Anual
+**📊 Esta medida tiene dos versiones dependiendo de lo que necesites:**
+
+**Versión A: Compara año completo vs año anterior (FUNCIONA CON 3 AÑOS - RESPETA CONTEXTO DEL VISUAL)**
+```dax
+-- Crecimiento Anual de Ventas = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR AnioActual = 
+    IF(
+        HASONEVALUE(Ventas[fecha]),
+        YEAR(VALUES(Ventas[fecha])),
+        IF(
+            HASONEVALUE(YEAR(Ventas[fecha])),
+            VALUES(YEAR(Ventas[fecha])),
+            YEAR(MAX(Ventas[fecha]))
+        )
+    )
+VAR AnioAnterior = AnioActual - 1
+VAR VentasAnioAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas),
+            YEAR(Ventas[fecha]) = AnioAnterior
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasAnioAnterior) || VentasAnioAnterior = 0 || AnioAnterior < 2023,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasAnioAnterior,
+            VentasAnioAnterior,
+            0
+        ) * 100
+    )
+```
+
+**✅ Versión SIMPLIFICADA que FUNCIONA mejor (USA EL AÑO DEL CONTEXTO DE CADA FILA):**
+```dax
+-- Crecimiento Anual de Ventas = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR AnioActual = 
+    IF(
+        HASONEVALUE(Ventas[fecha]),
+        YEAR(SELECTEDVALUE(Ventas[fecha])),
+        YEAR(MAX(Ventas[fecha]))
+    )
+VAR AnioAnterior = AnioActual - 1
+VAR VentasAnioAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas),
+            YEAR(Ventas[fecha]) = AnioAnterior
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasAnioAnterior) || VentasAnioAnterior = 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasAnioAnterior,
+            VentasAnioAnterior,
+            0
+        ) * 100
+    )
+```
+
+**✅ MEJOR SOLUCIÓN: Crear columna calculada de Año y usar en medida:**
+1. **Primero crea una columna calculada en la tabla Ventas:**
+   ```dax
+   -- Año (columna) = YEAR(Ventas[fecha])
+   ```
+
+2. **Luego usa esta medida (que funciona perfecto con agrupación por año):**
+   ```dax
+   -- Crecimiento Anual de Ventas = 
+   VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+   VAR AnioActual = SELECTEDVALUE(Ventas[Año])
+   VAR AnioAnterior = AnioActual - 1
+   VAR VentasAnioAnterior = 
+       CALCULATE(
+           SUM(Ventas[total]),
+           FILTER(
+               ALL(Ventas),
+               Ventas[Año] = AnioAnterior
+           )
+       )
+   RETURN
+       IF(
+           ISBLANK(VentasAnioAnterior) || VentasAnioAnterior = 0,
+           BLANK(),
+           DIVIDE(
+               VentasActuales - VentasAnioAnterior,
+               VentasAnioAnterior,
+               0
+           ) * 100
+       )
+   ```
+
+**🔍 Cómo usar para ver los 3 años:**
+1. Crea un gráfico de columnas o tabla
+2. Eje/Columnas: Arrastra `Ventas[Año]` (la columna calculada) o `Ventas[fecha]` → Formato → Nivel de fecha: "Año"
+3. Valores: Arrastra `-- Crecimiento Anual de Ventas`
+4. **Deberías ver**: 2023 (BLANK), 2024 (crecimiento vs 2023), 2025 (crecimiento vs 2024) ✅
+
+**Versión B: Compara mismo período del año anterior (Para comparaciones mes a mes)**
+
+**✅ Versión QUE FUNCIONA (Usa función de tiempo como YTD - compara período específico):**
 ```dax
 -- Variación YoY = 
-VAR VentasActuales = SUM(Ventas[total])
-VAR VentasAñoAnterior = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR VentasAnioAnterior = 
     CALCULATE(
         SUM(Ventas[total]),
         SAMEPERIODLASTYEAR(Ventas[fecha])
     )
 RETURN
     IF(
-        VentasAñoAnterior > 0,
-        (VentasActuales - VentasAñoAnterior) / VentasAñoAnterior,
-        BLANK()
+        ISBLANK(VentasAnioAnterior) || VentasAnioAnterior = 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasAnioAnterior,
+            VentasAnioAnterior,
+            0
+        ) * 100
     )
 ```
+
+**🔍 Usa SAMEPERIODLASTYEAR (función de tiempo estándar) igual que YTD usa DATESYTD**
+
+**✅ Versión SIMPLIFICADA (Recomendada si la primera no funciona):**
+```dax
+-- Variación YoY = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR FechaMax = MAX(Ventas[fecha])
+VAR AnioActual = YEAR(FechaMax)
+VAR MesActual = MONTH(FechaMax)
+VAR AnioAnterior = AnioActual - 1
+VAR VentasAnioAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas[fecha]),
+            YEAR(Ventas[fecha]) = AnioAnterior &&
+            MONTH(Ventas[fecha]) = MesActual
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasAnioAnterior) || VentasAnioAnterior = 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasAnioAnterior,
+            VentasAnioAnterior,
+            0
+        ) * 100
+    )
+```
+
+**🔍 Esta versión usa `ALL(Ventas[fecha])` para respetar el contexto (igual que MoM que funciona)**
+
 **Formato**: Porcentaje (%)
+
+**✅ SOLUCIÓN APLICADA:**
+- Se agregaron datos de 2023, 2024 y 2025 a los CSV
+- Ahora tienes datos de 3 años completos para comparación YoY
+- **2023**: 372 ventas - $1,049,824.73 (Mayo-Diciembre)
+- **2024**: 372 ventas - $1,062,852.92 (Mayo-Diciembre)  
+- **2025**: 752 ventas - $2,379,416.26 (Enero-Diciembre) ✅
+- **Crecimiento 2025 vs 2024**: ~123.8% (2025 tiene más del doble de ventas)
+- Usa la "Versión A: Compara año completo" para ver el crecimiento total anual
+
+**🔍 Solución de problemas:**
+- Si muestra BLANK: Verifica que tengas datos de ambos años en el mismo período
+- La medida compara el mismo período del año anterior usando SAMEPERIODLASTYEAR
+- Ejemplo: Enero 2025 vs Enero 2024, Diciembre 2025 vs Diciembre 2024
+- Si estás en 2025, la comparación será automáticamente con 2024
 
 ---
 
 ### Medida 14: Crecimiento Mes a Mes (MoM)
+**⚠️ NOTA IMPORTANTE**: Esta medida requiere que tengas datos de al menos 2 meses consecutivos.
+
+**✅ Versión QUE FUNCIONA (Usa función de tiempo como YTD):**
 ```dax
 -- Crecimiento MoM = 
-VAR VentasActuales = [-- Total de Ventas]
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
 VAR VentasMesAnterior = 
     CALCULATE(
-        [-- Total de Ventas],
+        SUM(Ventas[total]),
         DATEADD(Ventas[fecha], -1, MONTH)
     )
 RETURN
     IF(
-        VentasMesAnterior > 0,
+        ISBLANK(VentasMesAnterior) || VentasMesAnterior = 0,
+        BLANK(),
         DIVIDE(
             VentasActuales - VentasMesAnterior,
             VentasMesAnterior,
             0
-        ),
-        BLANK()
+        ) * 100
     )
 ```
+
+**🔍 Usa DATEADD (función de tiempo estándar) igual que YTD usa DATESYTD**
+
+**Versión CORREGIDA (Resuelve el problema de "mes a mes"):**
+```dax
+-- Crecimiento MoM = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR FechaMax = MAX(Ventas[fecha])
+VAR AnioActual = YEAR(FechaMax)
+VAR MesActual = MONTH(FechaMax)
+VAR MesAnterior = IF(MesActual = 1, 12, MesActual - 1)
+VAR AnioAnterior = IF(MesActual = 1, AnioActual - 1, AnioActual)
+VAR VentasMesAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas[fecha]),
+            YEAR(Ventas[fecha]) = AnioAnterior &&
+            MONTH(Ventas[fecha]) = MesAnterior
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasMesAnterior) || VentasMesAnterior <= 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasMesAnterior,
+            VentasMesAnterior,
+            0
+        ) * 100
+    )
+```
+
+**✅ Versión ALTERNATIVA con PREVIOUSMONTH (Solo si tienes tabla de fechas):**
+```dax
+-- Crecimiento MoM (Con PREVIOUSMONTH) = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR VentasMesAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        PREVIOUSMONTH(Ventas[fecha])
+    )
+RETURN
+    IF(
+        ISBLANK(VentasMesAnterior) || VentasMesAnterior <= 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasMesAnterior,
+            VentasMesAnterior,
+            0
+        ) * 100
+    )
+```
+**Nota**: Esta versión solo funciona si tienes una tabla de fechas configurada correctamente. Si no tienes tabla de fechas, usa la versión RECOMENDADA.
+
+**🔍 Cómo usar en visuales para ver mes a mes:**
+1. Crea un gráfico de columnas o líneas
+2. Arrastra `Ventas[fecha]` al Eje (en Formato → Tipo de categoría → selecciona "Fecha" y agrupa por Mes)
+3. Arrastra `-- Crecimiento MoM` a Valores
+4. Cada columna/punto mostrará el crecimiento de ese mes vs el mes anterior
+
+**⚠️ IMPORTANTE**: Para que funcione "mes a mes", asegúrate de que el Eje esté agrupado por MES (no por fecha completa)
+
+**❌ Versión ALTERNATIVA 1 (NO funciona mes a mes - no usar):**
+~~Esta versión no funciona correctamente en visuales porque usa `ALL(Ventas)` en lugar de `ALL(Ventas[fecha])`~~
+
+**❌ Versión ALTERNATIVA 2 (NO funciona mes a mes - no usar):**
+~~Esta versión tampoco funciona porque usa `ALL(Ventas)` en lugar de `ALL(Ventas[fecha])`~~
+
+**⚠️ Versión MEJORADA (Funciona pero más compleja - usar la RECOMENDADA mejor):**
+```dax
+-- Crecimiento MoM = 
+VAR VentasActuales = CALCULATE(SUM(Ventas[total]))
+VAR FechaActual = MAX(Ventas[fecha])
+VAR AñoActual = YEAR(FechaActual)
+VAR MesActual = MONTH(FechaActual)
+VAR MesAnterior = IF(MesActual = 1, 12, MesActual - 1)
+VAR AñoMesAnterior = IF(MesActual = 1, AñoActual - 1, AñoActual)
+VAR VentasMesAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas),
+            YEAR(Ventas[fecha]) = AñoMesAnterior &&
+            MONTH(Ventas[fecha]) = MesAnterior
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasMesAnterior) || VentasMesAnterior <= 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasMesAnterior,
+            VentasMesAnterior,
+            0
+        ) * 100
+    )
+```
+
+**⚠️ Versión DEFINITIVA (Más compleja - usar la RECOMENDADA mejor):**
+```dax
+-- Crecimiento MoM = 
+VAR VentasActuales = 
+    CALCULATE(
+        SUM(Ventas[total])
+    )
+VAR AñoActual = 
+    IF(
+        ISFILTERED(Ventas[fecha]),
+        YEAR(MAX(Ventas[fecha])),
+        YEAR(MAX(Ventas[fecha]))
+    )
+VAR MesActual = 
+    IF(
+        ISFILTERED(Ventas[fecha]),
+        MONTH(MAX(Ventas[fecha])),
+        MONTH(MAX(Ventas[fecha]))
+    )
+VAR MesAnterior = IF(MesActual = 1, 12, MesActual - 1)
+VAR AñoMesAnterior = IF(MesActual = 1, AñoActual - 1, AñoActual)
+VAR VentasMesAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas[fecha]),
+            YEAR(Ventas[fecha]) = AñoMesAnterior &&
+            MONTH(Ventas[fecha]) = MesAnterior
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasMesAnterior) || VentasMesAnterior = 0,
+        BLANK(),
+        DIVIDE(
+            VentasActuales - VentasMesAnterior,
+            VentasMesAnterior,
+            0
+        ) * 100
+    )
+```
+
+**🔍 SOLUCIÓN DE PROBLEMAS si NO muestra nada (BLANK):**
+
+1. **Verifica que tienes datos de al menos 2 meses diferentes:**
+   - Crea una visualización con `Ventas[fecha]` y cuenta los meses únicos
+   - Si solo hay 1 mes, la medida mostrará BLANK (no hay mes anterior)
+
+2. **Verifica el nombre de la columna de fecha:**
+   - Si tu columna se llama diferente (ej: `Fecha`, `date`, `fecha_venta`), cambia `Ventas[fecha]` por el nombre correcto
+   - Verifica que la columna esté formateada como **Fecha** en Power BI
+
+3. **Prueba esta versión de diagnóstico primero:**
+```dax
+-- Test MoM (Diagnóstico) = 
+VAR VentasActuales = SUM(Ventas[total])
+VAR FechaMax = MAX(Ventas[fecha])
+VAR MesActual = MONTH(FechaMax)
+VAR AñoActual = YEAR(FechaMax)
+VAR MesAnterior = IF(MesActual = 1, 12, MesActual - 1)
+VAR AñoAnterior = IF(MesActual = 1, AñoActual - 1, AñoActual)
+VAR VentasMesAnterior = 
+    CALCULATE(
+        SUM(Ventas[total]),
+        FILTER(
+            ALL(Ventas),
+            YEAR(Ventas[fecha]) = AñoAnterior &&
+            MONTH(Ventas[fecha]) = MesAnterior
+        )
+    )
+RETURN
+    IF(
+        ISBLANK(VentasMesAnterior) || VentasMesAnterior = 0,
+        "Sin datos mes anterior", // Cambiar a BLANK() después de verificar
+        DIVIDE(
+            VentasActuales - VentasMesAnterior,
+            VentasMesAnterior,
+            0
+        ) * 100
+    )
+```
+
+4. **Si usas la medida en un visual con filtros de fecha:**
+   - Asegúrate de que el filtro incluya al menos 2 meses
+   - Prueba sin filtros primero para verificar que funciona
+
+5. **Si sigue sin funcionar:**
+   - Usa la **Versión ALTERNATIVA 1** (usa año*100 + mes)
+   - Verifica que `SUM(Ventas[total])` funciona correctamente primero
 **Formato**: Porcentaje (%)
 
 ---
