@@ -81,6 +81,8 @@ jupyter notebook programas/tienda_aurelion.ipynb
 
 **NUEVO en Sprint 4**: Dashboard completo en Power BI Desktop con medidas DAX avanzadas, KPIs con objetivos, análisis temporal, jerarquías y agrupaciones.
 
+![Dashboard Power BI - Tienda Aurelion](Power%20BI/dashboard.jpg)
+
 #### Características del Dashboard Sprint 4
 
 - **11+ Medidas DAX** con diferentes tipos de función:

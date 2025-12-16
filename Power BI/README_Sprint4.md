@@ -7,6 +7,7 @@
 
 ### Archivo Principal
 - **Sprint4.pbix** - Archivo principal de Power BI (ubicado en esta carpeta Power BI/)
+  - **Vista previa**: `dashboard.jpg` (captura del dashboard Sprint 4)
 
 ### Documentación Sprint 4
 
@@ -36,6 +37,10 @@
 ### Paso 1: Leer el Archivo Power BI
 1. Abrir **Presentacion_Lectura_PowerBI.md**
 2. Seguir las instrucciones para entender el archivo Sprint4.pbix
+
+### Vista Previa del Dashboard
+
+![Dashboard Power BI - Tienda Aurelion](dashboard.jpg)
 
 ### Paso 2: Crear Medidas DAX
 1. Abrir **Guia_Paso_a_Paso_Medidas_DAX.md** para instrucciones detalladas
@@ -74,6 +79,6 @@ tienda-aurelionV4/
 
 ---
 
-**Última actualización**: Diciembre 2025  
+**Última actualización**: Diciembre 2025
 **Sprint**: 4  
 **Proyecto**: Tienda Aurelion

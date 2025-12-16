@@ -1405,6 +1405,22 @@ def pagina_power_bi():
     creado en **Microsoft Power BI Desktop** con visualizaciones interactivas avanzadas.
     """)
     
+    # Mostrar imagen del dashboard si está disponible
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    dashboard_img_path = os.path.join(script_dir, "..", "Power BI", "dashboard.jpg")
+
+    if os.path.exists(dashboard_img_path):
+        st.image(
+            dashboard_img_path,
+            caption="Vista del Dashboard Power BI - Tienda Aurelion (Sprint 4)",
+            use_column_width=True,
+        )
+    else:
+        st.warning(
+            "⚠️ No se encontró la imagen `dashboard.jpg` en la carpeta `Power BI/`. "
+            "Verifica que el archivo exista para mostrar la vista previa del dashboard."
+        )
+    
     # Columnas para layout
     col1, col2 = st.columns([1, 1])
     
@@ -1447,7 +1463,6 @@ def pagina_power_bi():
         """)
         
         # Verificar si existe el archivo Sprint4.pbix
-        script_dir = os.path.dirname(os.path.abspath(__file__))
         pbix_path = os.path.join(script_dir, "..", "Power BI", "Sprint4.pbix")
         
         archivo_encontrado = os.path.exists(pbix_path)

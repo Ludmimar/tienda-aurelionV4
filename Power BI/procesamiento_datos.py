@@ -49,13 +49,13 @@ def cargar_datos():
                 detalle_ventas = pd.read_csv(detalle_path, encoding='utf-8')
                 clientes = pd.read_csv(clientes_path, encoding='utf-8')
                 print(f"   [INFO] Datos cargados desde: {ruta_base}")
-                return productos, ventas, detalle_ventas, clientes
+        return productos, ventas, detalle_ventas, clientes
         except Exception as e:
             continue
     
     # Si no se encontraron archivos, generar datos de ejemplo
     print(f"   [INFO] No se encontraron archivos CSV. Generando datos de ejemplo...")
-    return generar_datos_ejemplo()
+        return generar_datos_ejemplo()
 
 
 def generar_datos_ejemplo():
