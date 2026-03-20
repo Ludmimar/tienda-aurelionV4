@@ -597,38 +597,6 @@ FIN PROGRAMA
    - **Razón**: Mejora experiencia de usuario y organización visual
    - **Implementación**: Aceptada con caracteres Unicode
 
-### ❌ Sugerencias Descartadas
-
-1. **Uso de base de datos SQLite**
-   - **Sugerencia**: Migrar de CSV a SQLite para mejor rendimiento
-   - **Razón de descarte**: Para el tamaño actual del dataset (20 productos), CSV es suficiente y más simple. SQLite agregaría complejidad innecesaria
-   - **Alternativa**: Se mantiene CSV con opción de migrar a futuro si escala
-
-2. **Framework GUI (tkinter)**
-   - **Sugerencia**: Crear interfaz gráfica con tkinter
-   - **Razón de descarte**: El proyecto requiere específicamente una interfaz de consola interactiva. GUI requeriría más tiempo de desarrollo
-   - **Alternativa**: Se mantiene interfaz de consola con menús claros
-
-3. **Librería pandas para análisis**
-   - **Sugerencia**: Usar pandas.DataFrame para manipulación de datos
-   - **Razón de descarte**: Agrega dependencia externa innecesaria. Las operaciones requeridas se pueden hacer eficientemente con Python estándar
-   - **Alternativa**: Uso de estructuras de datos nativas (listas y diccionarios)
-
-4. **Autenticación de usuarios**
-   - **Sugerencia**: Implementar sistema de login con diferentes roles (admin, vendedor)
-   - **Razón de descarte**: Excede el alcance del proyecto actual. No es requisito del sprint
-   - **Alternativa**: Sistema de gestión sin autenticación, enfocado en funcionalidad core
-
-5. **Logging con módulo logging**
-   - **Sugerencia**: Implementar registro de operaciones con el módulo `logging`
-   - **Razón de descarte**: Para un programa educativo y de demostración, print statements son suficientes y más directos
-   - **Alternativa**: Mensajes descriptivos con `print()`
-
-6. **Expresiones regulares para validación**
-   - **Sugerencia**: Usar regex para validar formatos de entrada
-   - **Razón de descarte**: Las validaciones requeridas son simples (números, strings básicos). Regex agregaría complejidad innecesaria
-   - **Alternativa**: Validaciones con métodos string estándar (`.isdigit()`, `.strip()`)
-
 ---
 
 ## 🚀 Instrucciones de Uso
